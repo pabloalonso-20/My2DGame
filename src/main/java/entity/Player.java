@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Player extends Entity{
@@ -33,16 +34,22 @@ public class Player extends Entity{
     public void getPlayerImage(){
 
         try{
-
-            up1 = ImageIO.read(getClass().getResourceAsStream("player/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("player/boy_up_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("player/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("player/boy_right_2.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("player/boy_left_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("player/boy_left_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("player/boy_down_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("player/boy_down_1.png"));
-
+            File f1 = new File("./src/player/boy_up_1.png");
+            File f2 = new File("./src/player/boy_up_2.png");
+            File f3 = new File("./src/player/boy_down_1.png");
+            File f4 = new File("./src/player/boy_down_2.png");
+            File f5 = new File("./src/player/boy_left_1.png");
+            File f6 = new File("./src/player/boy_left_2.png");
+            File f7 = new File("./src/player/boy_right_1.png");
+            File f8 = new File("./src/player/boy_right_2.png");
+            up1 = ImageIO.read(f1);
+            up2 = ImageIO.read(f2);
+            down1 =ImageIO.read(f3);
+            down2 = ImageIO.read(f4);
+            left1 = ImageIO.read(f5);
+            left2 = ImageIO.read(f6);
+            right1 = ImageIO.read(f7);
+            right2 = ImageIO.read(f8);
 
         }catch(IOException e){
             e.printStackTrace();
@@ -50,7 +57,7 @@ public class Player extends Entity{
     }
 
     public void update() {
-
+        //this if is so the character doesn't animate "walking" when standing still
         if (keyH.upPressed == true || keyH.downPressed == true ||
                 keyH.leftPressed == true || keyH.rightPressed == true) {
 
@@ -69,18 +76,17 @@ public class Player extends Entity{
             }
 
             spriteCounter++;
-            if (spriteCounter > 12) {
+            if (spriteCounter > 10) {
                 if (spriteNum == 1)
                     spriteNum = 2;
                 else if (spriteNum == 2)
                     spriteNum = 1;
 
+                spriteCounter = 0;
             }
         }
     }
     public void draw(Graphics2D g2){
-//        g2.setColor(Color.white);
-//        g2.fillRect(x,y,gp.tileSize,gp.tileSize);
 
         BufferedImage image = null;
 
