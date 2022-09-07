@@ -18,13 +18,19 @@ public class GamePanel extends JPanel implements Runnable{
     public int screenWidth = tileSize * maxScreenCol; // 48*16 = 760 pixels
     public int screenHeight = tileSize * maxScreenRow; // 48*12 = 576 pixels
 
+    // WORLD SETTINGS
+    public final int maxWorldCol = 50;
+    public final int maxWorldRow =50;
+    public final int worldWidth = tileSize * maxWorldCol;
+    public final int worldHeight = tileSize * maxWorldRow;
+
     //FPS
     int FPS = 60;
 
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
-    Player player = new Player(this,keyH);
+    public Player player = new Player(this,keyH);
 
     //constructor
     public GamePanel(){
@@ -81,6 +87,6 @@ public class GamePanel extends JPanel implements Runnable{
 
         player.draw(g2);
 
-        g2.dispose(); //when drawing is done, disppse of this graphics//good practice to save memory
+        g2.dispose(); //when drawing is done, dispose of this graphics//good practice to save memory
     }
 }
