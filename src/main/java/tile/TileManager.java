@@ -71,7 +71,7 @@ public class TileManager {
                 String line = br.readLine();//read a single line of text onto line
 
                 while(col < gp.maxWorldCol){
-                    String numbers[] = line.split(" "); //split the string after a space
+                    String[] numbers = line.split(" "); //split the string after a space
 
                     int num = Integer.parseInt(numbers[col]);//change string to integer
 
